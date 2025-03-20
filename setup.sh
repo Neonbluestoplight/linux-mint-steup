@@ -3,16 +3,23 @@
 # Exit on any error
 set -e
 
+#-----------------------------------------------------------------------------
+# UPDATE AND UPGRADE PACKAGES
+#-----------------------------------------------------------------------------
+echo -e "----------------\nUpdating and upgrading packages\n----------------"
+sudo apt update && sudo apt upgrade -y
+
+#-----------------------------------------------------------------------------
+# INSTALL ADDITIONAL PACKAGES
+#-----------------------------------------------------------------------------
+echo -e "----------------\nInstalling additional required packages\n----------------"
+sudo apt install build-essential
 
 #-----------------------------------------------------------------------------
 # CREATE FONT AND THEMES FOLDER IF DON'T EXIST
 #-----------------------------------------------------------------------------
 echo -e "----------------\nCreating font and themes folders if they don't exist\n----------------"
 mkdir -p ~/.themes ~/.fonts
-
-# Update and upgrade
-echo -e "----------------\nUpdating and upgrading packages\n----------------"
-sudo apt update && sudo apt upgrade -y
 
 #--------------------------------------------------------------
 # INSTALL DOCKER https://docs.docker.com/engine/install/ubuntu/
