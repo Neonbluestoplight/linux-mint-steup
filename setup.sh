@@ -51,28 +51,4 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 #-----------------------------------------------------------------------------
 # DOCKER POSTINSTALL https://docs.docker.com/engine/install/linux-postinstall/
 #-----------------------------------------------------------------------------
-echo -e "----------------\nAdding user to Docker group\n----------------"
-sudo groupadd docker || true
-sudo usermod -aG docker $USER
-
-# Inform the user about new group changes
-echo -e "You need to log out and log back in to apply the group changes."
-
-# Start a new group session (optional; user may need to log out)
-newgrp docker || true
-
-echo -e "----------------\nChecking Docker installation\n----------------"
-docker run hello-world || { echo "Docker installation failed. Please check the output above."; exit 1; }
-
-echo "Do you see the hello world message from Docker? (yes/no)"
-read input
-if [[ "$input" == "yes" ]]; then
-  echo "Please reboot your computerContinuing....."
-else
-  echo "Exiting due to failure to see Docker message."
-  exit 1
-fi
-
-# Configure Docker to start on boot
-sudo systemctl enable docker.service
-sudo systemctl enable containerd.service
+echo "Docker is now installed. Please follow the postinstall steps at https://docs.docker.com/engine/install/linux-postinstall/"
